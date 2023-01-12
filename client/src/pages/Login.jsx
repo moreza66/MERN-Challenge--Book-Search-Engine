@@ -6,14 +6,27 @@ import Form from 'react-bootstrap/Form';
 import useLoggedin from "../hooks/useLoggedin";
 
 export default function Login() {
-
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState(false)
 
+    const { onLogin } = useLogin()
+
+    const loggedin = useLoggedin()
+
+    useEffect(() => {
+        if (loggedin) {
+            window.location.href = "/"
+        }
+    }, [loggedin])
 
     const handleLogin = (e) => {
-      console.log(e)
+        e.preventDefault()
+        onLogin(email, password, () => {
+            window.location.href = "/"
+        }, () => {
+            setError(true)
+        })
     }
 
 
@@ -30,7 +43,7 @@ export default function Login() {
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
                                 onChange={(e) => {
-                                    console.log(e)
+                                  setEmail(e.target.value)
                                 }
                                 }
                                 type="email" placeholder="Enter email" />
@@ -40,7 +53,7 @@ export default function Login() {
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 onChange={(e) => {
-                                    console.log(e)
+                                 setPassword(e.target.value)
                                 }
                                 }
                                 type="password" placeholder="Password" />

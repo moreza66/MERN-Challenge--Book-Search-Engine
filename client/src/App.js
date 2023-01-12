@@ -1,5 +1,6 @@
 import {Routes, Route } from "react-router-dom"
 import Login from "./pages/Login";
+import SingUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Footer from "./pages/Footer";
 import Header from "./pages/Header";
@@ -12,7 +13,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/singup" element={<SingUp />} />
         </Routes>
         <Footer />
       </MantineProvider>

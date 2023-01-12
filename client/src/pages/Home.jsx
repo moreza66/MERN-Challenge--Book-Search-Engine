@@ -5,7 +5,11 @@ import axios from "axios";
 import getToken from "../hooks/getToken";
 import useLoggedin from "../hooks/useLoggedin";
 
-export default function Home() {
+export default function Home() {    
     
+    const [search, setSearch] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [books, setBooks] = useState([])
+
 }
 return

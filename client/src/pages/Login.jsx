@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import useLoggedin from "../hooks/useLoggedin";
 
 export default function Login() {
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState(false)
@@ -43,7 +44,7 @@ export default function Login() {
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
                                 onChange={(e) => {
-                                  setEmail(e.target.value)
+                                    setEmail(e.target.value)
                                 }
                                 }
                                 type="email" placeholder="Enter email" />
@@ -53,12 +54,18 @@ export default function Login() {
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 onChange={(e) => {
-                                 setPassword(e.target.value)
+                                    setPassword(e.target.value)
                                 }
                                 }
                                 type="password" placeholder="Password" />
                         </Form.Group>
-
+                        {error && (
+                            <div className="w-full my-2">
+                                <span className="text-red-600">
+                                    Email or password is incorrect
+                                </span>
+                            </div>
+                        )}
                         <Button variant="primary" type="submit" onClick={handleLogin}>
                             Login
                         </Button>

@@ -4,10 +4,11 @@ import "./App.css";
 import Header from "./pages/Header";
 import Footer from "./pages/Footer";
 import Login from "./pages/Login";
+import SingUp from "./pages/SignUp";
 import { MantineProvider } from '@mantine/core';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FavoriteBooks from "./pages/FavoriteBooks";
-import SingUp from "./pages/SingUp";
+
 
 function App() {
 

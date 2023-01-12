@@ -1,24 +1,4 @@
-const mongoose = require('mongoose')
-
-const userSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    role: {
-        type: Array,
-        required: true
-    }
-})
-
-const Users = mongoose.model('users', userSchema)
-
-module.exports = Usersconst express = require('express')
+const express = require('express')
 const router = express.Router()
 const Users = require('../models/users')
 const Books = require('../models/books')

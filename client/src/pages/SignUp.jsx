@@ -1,10 +1,10 @@
-
+import useLogin from "../hooks/useLogin"
 import { Helmet } from "react-helmet"
-import {useState } from "react"
+import { useEffect, useState } from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-
+import useLoggedin from "../hooks/useLoggedin";
 
 export default function SingUp() {
 

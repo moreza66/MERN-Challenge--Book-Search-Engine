@@ -3,8 +3,9 @@ const app = express()
 const PORT = 8000
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const fileUpload = require('express-fileupload')
 const cors = require('cors')
-
+const path = require('path')
 
 mongoose.connect('mongodb://localhost:27017/book', {
     useNewUrlParser: true,

@@ -90,6 +90,8 @@ router.post('/addFavorite/:id', [
 ], isAuth, async (req, res) => {
 
     try {
+
+   
         const { id } = req.params
 
         const token = req.headers.authorization.split(' ')[1]
@@ -113,7 +115,7 @@ router.post('/addFavorite/:id', [
             userID: userId,
             bookID: id
         })
-
+        console.log("THIS is HERE", id)
         res.status(200).json({
             message: 'Added to favorites'
         })

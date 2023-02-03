@@ -59,6 +59,7 @@ router.post(
 
 router.get('/all', async (req, res) => {
     try {
+        console.log(">>>>>>>>",res)
         const books = await Books.find({})
         res.status(200).json(books)
         return

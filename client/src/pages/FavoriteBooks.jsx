@@ -19,6 +19,7 @@ export default function FavoriteBooks() {
                     Authorization: `Bearer ${token}`,
                 }
             }).then((res) => {
+                console.log(">>>>> ",res.data)
                 if (res.data.favorites.length > 0) {
                     setBooks(res.data.favorites)
                 }

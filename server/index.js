@@ -1,33 +1,39 @@
-const express = require('express')
-const app = express()
-const PORT = 8000
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const fileUpload = require('express-fileupload')
-const cors = require('cors')
-const path = require('path')
+require("dotenv").config();
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 8000;
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
+const cors = require("cors");
+const path = require("path");
 
-mongoose.connect('mongodb://localhost:27017/book', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-const db = mongoose.connection
-db.on('error', (error) => console.error('db error:', error))
-db.once('open', () => console.log('Connected to Database'))
+mongoose.connect("mongodb://localhost:27017/book", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-app.use(cors())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.json())
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
-app.use(express.static('uploads'));
+const db = mongoose.connection;
+db.on("error", (error) => console.error("db error:", error));
+db.once("open", () => console.log("Connected to Database"));
 
-const userRouter = require('./routes/user')
-app.use('/user', userRouter)
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
-const booksRouter = require('./routes/books')
-app.use('/books', booksRouter)
+app.use(express.static("uploads"));
+
+const userRouter = require("./routes/user");
+app.use("/user", userRouter);
+
+const booksRouter = require("./routes/books");
+app.use("/books", booksRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
+  console.log(`Server running on port ${PORT}`);
+});

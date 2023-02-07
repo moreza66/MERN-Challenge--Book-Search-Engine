@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/moreza66/MERN-Challenge--Book-Search-Engine#readme",
   "dependencies": {
-    "concurrently": "^7.6.0",
     "dotenv": "^16.0.3",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }
